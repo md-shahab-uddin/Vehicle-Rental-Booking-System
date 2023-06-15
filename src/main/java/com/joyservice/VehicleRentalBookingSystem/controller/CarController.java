@@ -14,10 +14,12 @@ import com.joyservice.VehicleRentalBookingSystem.entity.vehicle.Car;
 import com.joyservice.VehicleRentalBookingSystem.service.CarService;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/car")
 @AllArgsConstructor
+@Slf4j
 public class CarController
 {
     private final CarService carService;
@@ -25,6 +27,7 @@ public class CarController
     public ResponseEntity<String> save(@RequestBody Car car)
     {
         carService.saveCar(car);
+        log.info("car saved successfully");
         return ResponseEntity.status(HttpStatus.OK).body("Car added successfully..");
     }
     @GetMapping("/findAll")
